@@ -37,9 +37,9 @@ async def register_user_firebase(user: UserRegister):
         cursor = conn.cursor()
         try:
             cursor.execute(
-                "EXEC otd.create_user @username = ?, @name = ?, @email = ?",
+                "EXEC dbo.create_user @username = ?, @name = ?, @email = ?",
                 user_record.uid,
-                user.name,
+                user.firstname+" "+user.lastname,
                 user.email
             )
             conn.commit()
